@@ -1,6 +1,7 @@
 import { Request,Response,NextFunction } from "express";
 import { userLoginList } from "../models/usermodel";
 import { TokenGenerator, TokenValidator } from "../../../services/tokengenerator";
+
 export function UserLogin(req:Request,res:Response,next:NextFunction){
     const {username,password} =  req.body
     console.log(username,password)
