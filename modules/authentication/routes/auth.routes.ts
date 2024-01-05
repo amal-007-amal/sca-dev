@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { UserLogin } from "../controllers/authentication";
+import { UserLogin, UserTokenValidate } from "../controllers/authentication";
 
 class AuthRoutes{
     router  =  Router()
@@ -7,7 +7,11 @@ class AuthRoutes{
         this.initRoutes()
     }
     initRoutes(){
-        this.router.post('/',UserLogin)
+        /**check the login using the credentails */
+        this.router.post('/userLogin',UserLogin)
+
+        /**check the token valid or not */
+        this.router.post('/valdateToken',UserTokenValidate)
     }
 }
 
