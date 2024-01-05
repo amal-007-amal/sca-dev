@@ -6,7 +6,7 @@ export function UserLogin(req:Request,res:Response,next:NextFunction){
     console.log(username,password)
     const userList = userLoginList
     let checkLogin = userList.filter((item)=>{
-        if(item.am_Username===username&&item.am_Password===password){
+        if(item.am_Username===username && item.am_Password===password){
             return item
         }
     })
