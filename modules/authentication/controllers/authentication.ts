@@ -20,7 +20,7 @@ export function UserLogin(req:Request,res:Response,next:NextFunction){
 }
 
 export function UserTokenValidate(req:Request,res:Response,next:NextFunction){
-    const token = req.body
+    const {token} = req.body
     const checkToken = TokenValidator(token)
     console.log("validate ",checkToken)
     res.send({data:checkToken})
