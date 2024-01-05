@@ -9,8 +9,8 @@ Node js Scalable Module Based rest API using express js
 Hi, I'm Amal Sankar P S.Full Stack Developer
 ```mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+    B-->A;
+    C-->A;
+    D-->A;
+    E-->A;
 ```
