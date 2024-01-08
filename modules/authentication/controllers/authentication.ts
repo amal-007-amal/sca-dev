@@ -4,19 +4,24 @@ import { TokenGenerator, TokenValidator } from "../../../services/tokengenerator
 
 export function UserLogin(req:Request,res:Response,next:NextFunction){
     const {username,password} =  req.body
-    console.log(username,password)
-    const userList = userLoginList
-    let checkLogin = userList.filter((item)=>{
-        if(item.am_Username===username && item.am_Password===password){
-            return item
+    console.log("username ",username,password)
+    if(username!=undefined && password!=undefined){
+        console.log(username,password)
+        const userList = userLoginList
+        let checkLogin = userList.filter((item)=>{
+            if(item.am_Username===username && item.am_Password===password){
+                return item
+            }
+        })
+        console.log("check login",checkLogin)
+        if(checkLogin!=undefined){
+            let token = TokenGenerator(checkLogin[0])
+            return res.send({message:'Login Success',jwt_token:token,user:checkLogin})
+        }else{
+            return res.send({message:'Login Failed'})
         }
-    })
-    console.log("check login",checkLogin)
-    if(checkLogin!=undefined){
-        let token = TokenGenerator(checkLogin[0])
-        return res.send({message:'Login Success',jwt_token:token,user:checkLogin})
     }else{
-        return res.send({message:'Login Failed'})
+        return res.status(500).send({message:'Invalid Credentials'})
     }
 }
 
